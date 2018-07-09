@@ -1,25 +1,31 @@
 <html>
 <head>
-	<title>Dropbox Chooser Playground</title>
-	<script src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="1pbgaxtv2e4sbj6"></script>
+	<title>OneDrive Picker Playground</title>
+	<script type="text/javascript" src="https://js.live.net/v7.2/OneDrive.js"></script>
 </head>
 	<body>
 		<button onclick="choose();" type="button">Choose</button>
 		<script>
 		var choose = (function() {
 			var options = {
-				success: function(files) {
-					console.log(files[0].link);
-					alert(files[0].link);
+				clientId: '87d16201-65d3-4bc3-95ad-40125eeee49b',
+				action: 'download',
+				advanced: {
+					filter: '.png,.jpg,.jpeg,.tiff'
+				},
+				success: function(response) {
+					console.log(response.value[0].webUrl);
+					alert(response.value[0].webUrl);
 				},
 				cancel: function() {
 					console.log("cancelled");
 				},
-				linkType: "direct",
-				extensions: [".jpg", ".png", ".jpeg", ".tiff"]
+				error: function(e) {
+					console.log(e);
+				}
 			};
 			
-			return function() {Dropbox.choose(options);};
+			return function() {OneDrive.open(options);};
 		})();
 		</script>
 	</body>
