@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>Dropbox Chooser Playground</title>
+	<script src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="1pbgaxtv2e4sbj6"></script>
+</head>
+	<body>
+		<button onclick="choose();" type="button">Choose</button>
+		<script>
+		var choose = (function() {
+			var options = {
+				success: function(files) {
+					console.log(files[0].link);
+					alert(files[0].link);
+				},
+				cancel: function() {
+					console.log("cancelled");
+				},
+				linkType: "direct",
+				extensions: [".jpg", ".png", ".jpeg", ".tiff"]
+			};
+			
+			return function() {Dropbox.choose(options);};
+		})();
+		</script>
+	</body>
+</html>
