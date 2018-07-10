@@ -4,7 +4,7 @@ const path = require('path');
 
 const certDirPath = path.join(process.cwd(), "cert");
 fs.mkdir(certDirPath, (err) => {
-	if (err.code !== 'EEXIST') throw err;
+	if (err && err.code !== 'EEXIST') throw err;
 });
 
 const attrs = [{ name: 'commonName', value: 'dev.local' }];
