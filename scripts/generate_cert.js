@@ -8,7 +8,7 @@ fs.mkdir(certDirPath, (err) => {
 });
 
 const attrs = [{ name: 'commonName', value: 'dev.local' }];
-const pems = selfsigned.generate(null, { algorithm: 'sha256' });
+const pems = selfsigned.generate(attrs, { algorithm: 'sha256' });
 
 const certPath = path.join(process.cwd(), "cert/server.crt");
 const keyPath = path.join(process.cwd(), "cert/server.key");
