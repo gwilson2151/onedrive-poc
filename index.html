@@ -11,11 +11,12 @@
 				clientId: '87d16201-65d3-4bc3-95ad-40125eeee49b',
 				action: 'download',
 				advanced: {
-					filter: '.png,.jpg,.jpeg,.tiff'
+					filter: '.png,.jpg,.jpeg,.tiff',
+					redirectUri: 'https://dev.local:8443/onedrive_picker_redirect.html'
 				},
 				success: function(response) {
-					console.log(response.value[0].webUrl);
-					alert(response.value[0].webUrl);
+					console.log(response);
+					alert(response.value[0]["@microsoft.graph.downloadUrl"]);
 				},
 				cancel: function() {
 					console.log("cancelled");
