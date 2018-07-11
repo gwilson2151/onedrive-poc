@@ -12,16 +12,16 @@
 				action: 'download',
 				advanced: {
 					filter: '.png,.jpg,.jpeg,.tiff',
-					redirectUri: 'https://dev.local:8443/onedrive_picker_redirect.html'
+					redirectUri: 'http://localhost:8080/onedrive_picker_redirect.html'
 				},
 				success: function(response) {
 					console.log(response);
-					alert(response.value[0]["@microsoft.graph.downloadUrl"]);
 				},
 				cancel: function() {
-					console.log("cancelled");
+					console.log('cancel()');
 				},
 				error: function(e) {
+					console.log('error()');
 					console.log(e);
 				}
 			};
